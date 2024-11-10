@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Welcome to Travel Safari</title>
+    <style type="text/css">
+      .bg-custom{
+        background-color: gray;
+      }
+      .nav-link{
+        color: white !important;
+        font: bold !important;
+      }
+      /*.back-grd{
+        background-color: #87CEFA;
+      }*/
+      .hero{
+        background-image: url('https://wallpaperaccess.com/full/407997.jpg');
+        background-size: cover;
+        width: 100%;
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: black;
+      }
+      .ab{
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        border: black;
+        border-bottom: thick;
+      }
+      .gallery img {
+        transition: transform 0.3s ease;
+        width: 100%;
+        height: auto;
+      }
+      .gallery img:hover 
+      {
+          transform: scale(1.1);
+      }
+      .capbld{
+        font-style: bold;
+        color: yellowgreen;
+        font-size: 50px;
+      }
+      .foot{
+        color: white;
+      }
+      .trsf{color: limegreen;
+          font-style: oblique;
+          font: bolder;
+      }
+      .capbl{
+        font-style: bold;
+        color: orangered;
+        font-size: 50px;
+      }
+
+    </style>
+</head>
+<body class="back-grd">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-custom">
+  <a class="navbar-brand" href="#"><img src="https://i.pinimg.com/originals/ab/82/cf/ab82cfc63bd77cb794b09acac96af0e1.jpg" width="45" height="45" alt="Logo">TRAVEL SAFARI</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Book</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Packages</a>
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">United State </a>
+          <a class="dropdown-item" href="#">India</a>
+          <a class="dropdown-item" href="#">France</a>
+          <a class="dropdown-item" href="#">Germany</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Gallery</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+    <div>
+      <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#loginModal" >Login</a>
+      <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#registerModal">Register</a>
+    </div>
+  </div>
+</nav>
+
+
+<div class="hero">
+  <h1>Welcome to <span class="capbl">Travel Safari</span></h1>
+  <h2 id="place-name">Visit <span class="changing-country" >United States</span></h2>
+  <a href="#booking-section" class="btn btn-danger btn-lg">Book Now</a>
+</div>
+
+<script type="text/javascript">
+  const countries = [
+    "United States",
+    "India",
+    "France",
+    "Germany",
+    "Japan",
+    "Brazil"
+];
+
+let index = 0;
+
+function changeCountry() {
+    const placeName = document.querySelector('.changing-country');
+    index = (index + 1) % countries.length;
+    placeName.textContent = countries[index];
+}
+
+setInterval(changeCountry, 2000);
+</script>
+
+
+<!-- Booking Section -->
+<div class="container mt-5" id="booking-section">
+    <div class="row">
+        <!-- Left Section with Image -->
+        <div class="col-md-6">
+            <div class="ab">
+              <img src="https://wallpaperaccess.com/full/5317757.jpg" alt="Brand Image" class="img-fluid">
+            </div>
+        </div>
+        <!-- Right Section with Form -->
+        <div class="col-md-6">
+            <h3>Booking Form</h3>
+            <form id="booking-form">
+                <div class="mb-3">
+                    <label for="destination" class="form-label">Where to?</label>
+                    <select id="destination" class="form-select" required>
+                        <option value="" disabled selected>Select a place</option>
+                        <option value="place1">USA</option>
+                        <option value="place2">FRANCE</option>
+                        <option value="place3">JAPAN</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="persons" class="form-label">How Many Persons?</label>
+                    <input type="number" id="persons" class="form-control" min="1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="start-date" class="form-label">Start Date</label>
+                    <input type="date" id="start-date" class="form-control" min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="end-date" class="form-label">End Date</label>
+                    <input type="date" id="end-date" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="description" class="form-control" minlength="50" maxlength="500" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Book Now</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Package Gallery Section -->
+<div class="container mt-5">
+    <h3>Package Gallery</h3>
+    <div class="row">
+        <!-- Package 1 -->
+        <div class="col-md-4 package-card">
+            <div class="card">
+                <img src="https://wallpaperaccess.com/full/1287681.jpg" class="card-img-top" alt="Package Image">
+                <div class="card-body">
+                    <h5 class="card-title">AUSTRALIA</h5>
+                    <p class="card-text">Australia is home to breathtaking landscapes, including the Great Barrier Reef, one of the world’s most famous coral reef systems, and Uluru (Ayers Rock), a sacred sandstone monolith in the Outback.</p>
+                    <p class="card-text"><strong>Price:</strong> $200</p>
+                    <p class="card-text"><strong>Rating:</strong> ★★★★☆</p>
+                    <button class="btn btn-success">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <!-- Package 2 -->
+        <div class="col-md-4 package-card">
+            <div class="card">
+                <img src="https://wallpaperaccess.com/full/1380006.jpg" class="card-img-top" alt="Package Image">
+                <div class="card-body">
+                    <h5 class="card-title">EUROPE</h5>
+                    <p class="card-text">Europe is home to iconic landmarks like the Eiffel Tower (France), the Colosseum (Italy), and the Acropolis (Greece). Many cities like Rome, Paris, and London offer deep historical and architectural experiences.</p>
+                    <p class="card-text"><strong>Price:</strong> $250</p>
+                    <p class="card-text"><strong>Rating:</strong> ★★★★★</p>
+                    <button class="btn btn-success">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <!-- Package 3 -->
+        <div class="col-md-4 package-card">
+            <div class="card">
+                <img src="https://wallpaperaccess.com/full/1128770.jpg" height="210" class="card-img-top" alt="Package Image">
+                <div class="card-body">
+                    <h5 class="card-title">EGYPT</h5>
+                    <p class="card-text">Egypt is famous for its ancient wonders, including the Pyramids of Giza, the Great Sphinx, and the temples of Luxor and Karnak. The Valley of the Kings, where pharaohs like Tutankhamun were buried, is another must-visit.</p>
+                    <p class="card-text"><strong>Price:</strong> $300</p>
+                    <p class="card-text"><strong>Rating:</strong> ★★★★☆</p>
+                    <button class="btn btn-success">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<!-- Services Section -->
+<div class="container mt-5">
+    <h3>Our Services</h3>
+    <div class="row">
+        <div class="col-md-4 service">
+            <h5>Affordable Hotel</h5>
+            <p>We provide budget-friendly accommodation options.</p>
+        </div>
+        <div class="col-md-4 service">
+            <h5>Food & Drinks</h5>
+            <p>Enjoy delicious meals and drinks during your trip.</p>
+        </div>
+        <div class="col-md-4 service">
+            <h5>Safety Guide</h5>
+            <p>Our trained guides ensure your safety throughout the journey.</p>
+        </div>
+        <div class="col-md-4 service">
+            <h5>Custom Itineraries</h5>
+            <p>Create a personalized travel plan that suits your needs.</p>
+        </div>
+        <div class="col-md-4 service">
+            <h5>Transportation Services</h5>
+            <p>Reliable transport options available for your convenience.</p>
+        </div>
+        <div class="col-md-4 service">
+            <h5>24/7 Customer Support</h5>
+            <p>We are here to assist you any time of the day.</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- Gallery Section -->
+<section class="gallery py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Gallery</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <img src="https://th.bing.com/th/id/R.0aa606c8564d729b6cfbd4379f109d3a?rik=M1kR2Kqg1%2biKOA&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f3%2f6%2fe%2f193555.jpg&ehk=dyiE6Vs8gpxGGT843tL4SteMdgXLHY%2bRWmfrWeRaC9Y%3d&risl=&pid=ImgRaw&r=0" alt="Gallery Image 1" class="img-fluid">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="https://cdn.wallpapersafari.com/24/0/PJ05BG.jpg" alt="Gallery Image 2" class="img-fluid">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="https://cdn.wallpapersafari.com/1/27/DQBfGo.jpg" alt="Gallery Image 3" class="img-fluid">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="https://wallpapercave.com/wp/wp4069461.jpg" alt="Gallery Image 4" class="img-fluid">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="https://wallpapercave.com/wp/wp9628495.jpg" alt="Gallery Image 5" class="img-fluid">
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="https://cdn.wallpapersafari.com/45/3/hzdZRl.jpg" alt="Gallery Image 6" class="img-fluid">
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+<!-- About Us Section -->
+<section class="about-us py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="https://png.pngtree.com/background/20230410/original/pngtree-travel-around-the-world-background-picture-image_2385120.jpg" alt="About Us Image" class="img-fluid">
+      </div>
+      <div class="col-md-6">
+        <h2><span class="capbld">A</span>bout Us</h2>
+        <p>At Travel Safari, we turn travel dreams into unforgettable adventures. With years of experience and a passion for exploration, we specialize in customized tours—from thrilling adventure trips and cultural experiences to luxury getaways and family packages. Our team works closely with trusted local guides to ensure safe, seamless, and enriching journeys. Wherever you dream of going, we’re here to make it happen. Let’s plan your next adventure together!</p>
+        <p>Let’s make your next trip extraordinary! Contact us today to start planning your next adventure with <span class="trsf">TRAVEL SAFARI</span>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="footer text-center bg-dark ">
+  <div class="container">
+    <p class="foot"><h2 class="foot">TRAVEL SAFARI </h2> 
+      <a href="#"><i class="fab fa-facebook-f" class="foot"></i></a>
+      <a href="#"><i class="fab fa-instagram" class="foot"></i></a>
+      <a href="#"><i class="fab fa-twitter" class="foot"></i></a>
+    </p>
+    <div class="foot">
+      <p>Contact Us</p>
+      <p>Email: petkarpranay08.com</p>
+      <p>Phone: +91 9588668824</p>
+      <p>Address: Wardha, Maharashtra, INDIA</p>
+    </div>
+    <p class="foot">&copy; 2024 TRAVEL SAFARI. All Rights Reserved.</p><br>
+  </div>
+</footer>
+
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email address</label>
+                        <input type="email" placeholder="email" class="form-control" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" placeholder="password" class="form-control" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <p class="mt-3">Don't Have an Account?     <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#registerModal">Register Here</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Register Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" class="form-control" id="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contact</label>
+                        <input type="tel" class="form-control" id="contact" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" class="form-control" id="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <div>
+                            <label><input type="radio" name="gender" value="male" required> Male</label>
+                            <label><input type="radio" name="gender" value="female" required> Female</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    <p class="mt-3"><a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Already have an account? Login here</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('booking-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const destination = document.getElementById('destination').value;
+        const persons = document.getElementById('persons').value;
+        const startDate = document.getElementById('start-date').value;
+        const endDate = document.getElementById('end-date').value;
+        const description = document.getElementById('description').value;
+
+        if (destination && persons && startDate && endDate && description) {
+            alert('Booking Successful!');
+        } else {
+            alert('Please fill in all fields.');
+        }
+    });
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
